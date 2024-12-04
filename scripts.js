@@ -151,4 +151,8 @@ function display(clickScoreId, multId, counterId, nextUpId, upId, boostId, picId
     elem(clickScoreId).innerHTML = clickScore;
     elem(multId).innerHTML = mult;
     elem(counterId).innerHTML = clicks;
+    elem(nextUpId).innerHTML = mult*10;
+    elem(upId).innerHTML = upgrades;
+    elem(boostId).innerHTML = boost == 1 ? "" : "Boost!!!";
+    elem(picId).src = boost == 1 ? HIDE_ASS[level] : SHOW_ASS[level];
 }
