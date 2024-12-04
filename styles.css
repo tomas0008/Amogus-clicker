@@ -1,0 +1,52 @@
+body {
+  background-color: rgb(30, 30, 30);
+  color: rgb(220, 220, 220);
+}
+
+div {
+  margin: 20px;
+  display: inline;
+  /*border: 2px solid red;*/
+  width: 100%;
+}
+
+img {
+  margin: 25px;
+}
+
+button {
+  background-color: rgb(0, 200, 50);
+  color: rgb(0, 0, 255);
+  border: 5px solid rgb(0, 100, 100);
+  border-radius: 10px;
+  height: 50px;
+  margin: 10px;
+}
+
+button:hover {
+  background-color: rgb(0, 255, 50);
+}
+
+button:active {
+  background-color: rgb(0, 145, 50);
+}
+
+button#reset {
+  background-color: rgb(200, 0, 0);
+  color: rgb(255, 200, 100);
+  border-color: rgb(150, 50, 50);
+}
+
+button#reset:hover {
+  background-color: rgb(255, 0, 0);
+}
+
+button#reset:active {
+  background-color: rgb(145, 0, 0);
+}
+
+p, span {
+  font: 30px "Times New Roman", Times, serif;
+  margin: 10px 20px;
+  text-align: center;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8" lang="en-us" />
+  
+  <link rel="stylesheet" href="styles.css" />
+  <script src="scripts.js"></script>
+  
+  <title>My web</title>
+</head>
+<body>
+  <div>
+    <button onclick="showImage('pic')">Show image</button>
+    <button onclick="hideImage('pic')">Hide image</button>
+    <br />
+    <button onclick="showAss('pic', 'boost')">Show ass</button>
+    <button onclick="hideAss('pic', 'boost')">Hide ass</button>
+    <p>Click multiplier: <span id="mult">1</span></p>
+    <p>Click counter: <span id="counter">0</span></p>
+    <p>Next upgrade: <span id="nextUpgr">10</span></p>
+    <button onclick="upgrade('counter', 'mult', 'nextUpgr')">Upgrade</button>
+    <button onclick="maxUpgrade('counter', 'mult', 'nextUpgr')">Max upgrade</button>
+    <br />
+    <button id="reset" onclick="reset('counter', 'mult', 'nextUpgr')">Reset</button>
+  </div>
+  <br />
+  <div>
+    <span style="color: red;">Amogus clicker</span>
+    <p id="boost" style="color: green;"></p>
+    <img id="pic" style="height: 200px;width: 200px;" onclick="addOne('counter')" src="amogus_front.jpeg" />
+  </div>
+</body>
+</html>
