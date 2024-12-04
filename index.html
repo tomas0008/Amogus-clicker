@@ -7,10 +7,9 @@
   <link rel="stylesheet" href="styles.css" />
   <script src="scripts.js"></script>
   
-  <title>Amogus clicker</title>
-  <link rel="icon" href="amogus_front.jpeg">
+  <title>My web</title>
 </head>
-<body>
+<body onload="load(); display('scorePerClick', 'mult', 'counter', 'nextUpgr', 'upgrades', 'boost', 'pic')" onunload="save()">
   <div>
     <button onclick="showImage('pic')">Show image</button>
     <button onclick="hideImage('pic')">Hide image</button>
@@ -26,6 +25,7 @@
     <button onclick="maxUpgrade('counter', 'mult', 'nextUpgr', 'scorePerClick', 'upgrades')">Max upgrade</button>
     <br />
     <button id="reset" onclick="reset('counter', 'mult', 'nextUpgr', 'scorePerClick', 'upgrades')">Reset</button>
+    <button onclick="save()" style="padding: 10px 20px;">Save</button>
   </div>
   <div>
     <span style="color: red;">Amogus clicker</span>
