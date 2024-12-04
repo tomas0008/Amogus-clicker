@@ -16,19 +16,21 @@
     <br />
     <button onclick="showAss('pic', 'boost')">Show ass</button>
     <button onclick="hideAss('pic', 'boost')">Hide ass</button>
+    <p>Score per click: <span id="scorePerClick">1</span></p>
     <p>Click multiplier: <span id="mult">1</span></p>
     <p>Click counter: <span id="counter">0</span></p>
     <p>Next upgrade: <span id="nextUpgr">10</span></p>
-    <button onclick="upgrade('counter', 'mult', 'nextUpgr')">Upgrade</button>
-    <button onclick="maxUpgrade('counter', 'mult', 'nextUpgr')">Max upgrade</button>
+    <p>Upgrades: <span id="upgrades">0</span></p>
+    <button onclick="upgrade('counter', 'mult', 'nextUpgr', 'scorePerClick', 'upgrades')">Upgrade</button>
+    <button onclick="maxUpgrade('counter', 'mult', 'nextUpgr', 'scorePerClick', 'upgrades')">Max upgrade</button>
     <br />
-    <button id="reset" onclick="reset('counter', 'mult', 'nextUpgr')">Reset</button>
+    <button id="reset" onclick="reset('counter', 'mult', 'nextUpgr', 'scorePerClick', 'upgrades')">Reset</button>
   </div>
-  <br />
   <div>
     <span style="color: red;">Amogus clicker</span>
-    <p id="boost" style="color: green;"></p>
-    <img id="pic" style="height: 200px;width: 200px;" onclick="addOne('counter')" src="amogus_front.jpeg" />
+    <span id="boost" style="color: green;"></span>
+    <br />
+    <img id="pic" style="height: 200px;width: 200px;" onclick="addOne('counter')" src="amogus_front1.jpeg" />
   </div>
 </body>
 </html>

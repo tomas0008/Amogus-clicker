@@ -5,13 +5,14 @@ body {
 
 div {
   margin: 20px;
-  display: inline;
-  /*border: 2px solid red;*/
-  width: 100%;
+  display: inline-block;
+  /*border: 2px solid blue;*/
+  width: 40%;
 }
 
 img {
   margin: 25px;
+  display: inline;
 }
 
 button {
@@ -48,5 +49,4 @@ button#reset:active {
 p, span {
   font: 30px "Times New Roman", Times, serif;
   margin: 10px 20px;
-  text-align: center;
 }
