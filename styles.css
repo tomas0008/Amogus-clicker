@@ -1,6 +1,8 @@
 body {
   background-color: rgb(30, 30, 30);
   color: rgb(220, 220, 220);
+  margin: 0;
+  padding: 0;
 }
 
 div {
@@ -32,17 +34,17 @@ button:active {
   background-color: rgb(0, 145, 50);
 }
 
-button#reset {
+button.reset {
   background-color: rgb(200, 0, 0);
   color: rgb(255, 200, 100);
   border-color: rgb(150, 50, 50);
 }
 
-button#reset:hover {
+button.reset:hover {
   background-color: rgb(255, 0, 0);
 }
 
-button#reset:active {
+button.reset:active {
   background-color: rgb(145, 0, 0);
 }
 
