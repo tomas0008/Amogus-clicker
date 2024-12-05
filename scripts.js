@@ -28,6 +28,8 @@ function addOne(counterId, lvlUpId)
     elem(counterId).innerHTML = Number((clicks += mult * boost).toFixed());
     if (clicks >= 100000000)
         elem(lvlUpId).style.display = "initial";
+    else
+        elem(lvlUpId).style.display = "none";
 }
 
 function upgrade(counterId, multElemId, nextUpId, clickScoreId, upgradesId)
