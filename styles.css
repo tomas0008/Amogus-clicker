@@ -9,6 +9,7 @@ div {
   margin: 20px;
   display: inline-block;
   /*border: 2px solid blue;*/
+  vertical-align: top;
   width: 40%;
 }
 
