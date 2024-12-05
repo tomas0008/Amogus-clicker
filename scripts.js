@@ -15,7 +15,7 @@ let nextUp = 10;
 let canLvlUp = 0;
 let win = 0;
 
-const defMult = 1000;
+const defMult = 1.5;
 const HIDE_ASS = {
     1: "amogus_front1.jpeg",
     2: "amogus_front2.gif",
