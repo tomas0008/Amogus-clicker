@@ -11,7 +11,7 @@ let boost = 1;
 let upgrades = 0;
 let level = 1;
 
-const defMult = 10000000000;
+const defMult = 1.5;
 const HIDE_ASS = {
     1: "amogus_front1.jpeg",
     2: "amogus_front2.gif",
