@@ -5,30 +5,30 @@
   
     <link rel="stylesheet" href="styles.css" />
     <script src="scripts.js"></script>
-    <link rel="icon" href="green-amogus.gif" />
+    <link rel="icon" href="amogus_front1.jpeg" />
   
     <title>Amogus clicker</title>
 </head>
-<body onload="load(); display('scorePerClick', 'mult', 'counter', 'nextUpgr', 'upgrades', 'boost', 'pic', 'lvl')" onunload="save()">
+<body id="body" onload="load(); display()" onunload="save()">
     <div id="main">
-        <button onclick="showImage('pic')">Show image</button>
-        <button onclick="hideImage('pic')">Hide image</button>
+        <button onclick="showImage()">Show image</button>
+        <button onclick="hideImage()">Hide image</button>
         <br />
-        <button onclick="showAss('pic', 'boost')">Show ass</button>
-        <button onclick="hideAss('pic', 'boost')">Hide ass</button>
+        <button onclick="showAss()">Show ass</button>
+        <button onclick="hideAss()">Hide ass</button>
         <p>Score per click: <span id="scorePerClick">1</span></p>
         <p>Click multiplier: <span id="mult">1</span></p>
         <p>Click counter: <span id="counter">0</span></p>
-        <p>Next upgrade: <span id="nextUpgr">10</span></p>
+        <p>Next upgrade: <span id="nextUp">10</span></p>
         <p>Upgrades: <span id="upgrades">0</span></p>
         <p>Level: <span id="lvl">1</span></p>
-        <button onclick="upgrade('counter', 'mult', 'nextUpgr', 'scorePerClick', 'upgrades')">Upgrade</button>
-        <button onclick="maxUpgrade('counter', 'mult', 'nextUpgr', 'scorePerClick', 'upgrades')">Max upgrade</button>
+        <button onclick="upgrade()">Upgrade</button>
+        <button onclick="maxUpgrade()">Max upgrade</button>
         <br />
-        <button id="lvlUp" onclick="lvlUp('counter', 'mult', 'nextUpgr', 'scorePerClick', 'upgrades', 'lvlUp', 'lvl', 'pic', 'boost', 'win', 'main', 'div2');" style="display: none; padding: 10px 68px;">Level up</button>
+        <button id="lvlUp" onclick="lvlUp();" style="display: none; padding: 10px 68px;">Level up</button>
         <br />
-        <button class="reset" onclick="reset('counter', 'mult', 'nextUpgr', 'scorePerClick', 'upgrades')">Reset</button>
-        <button class="reset" onclick="resetLvl('lvl', 'pic')">Reset level</button>
+        <button class="reset" onclick="reset()">Reset</button>
+        <button class="reset" onclick="resetLvl()">Reset level</button>
         <button onclick="save()" style="padding: 10px 20px;">Save</button>
     </div>
     <div id="div2">
@@ -36,7 +36,9 @@
         <span id="boost" style="color: green;"></span>
         <br />
         <span id="win" style="display: none; color: rgb(50, 255, 150);">Vyhral si a si kokot. Jeeeej</span>
-        <img id="pic" style="height: 200px;width: 200px;" onclick="addOne('counter', 'lvlUp')" src="amogus_front1.jpeg" />
+        <br />
+        <button id="resetAll" class="reset" style="display: none;">Reset all</button>
+        <img id="pic" style="height: 200px;width: 200px;" onclick="addOne()" src="amogus_front1.jpeg" />
     </div>
 </body>
 </html>

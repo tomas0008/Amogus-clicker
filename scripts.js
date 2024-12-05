@@ -3,7 +3,6 @@ function elem(elemId)
     return document.getElementById(elemId);
 }
 
-
 let clickScore = 1;
 let clicks = 0;
 let mult = 1;
@@ -11,7 +10,12 @@ let boost = 1;
 let upgrades = 0;
 let level = 1;
 
-const defMult = 1.5;
+let nextUp = 10;
+
+let canLvlUp = 0;
+let win = 0;
+
+const defMult = 1000;
 const HIDE_ASS = {
     1: "amogus_front1.jpeg",
     2: "amogus_front2.gif",
@@ -23,88 +27,135 @@ const SHOW_ASS = {
     3: "amogus_back3.gif"
 };
 
-function addOne(counterId, lvlUpId)
+function display()
 {
-    elem(counterId).innerHTML = Number((clicks += mult * boost).toFixed());
-    if (clicks >= 100000000)
-        elem(lvlUpId).style.display = "initial";
+    if (win)
+    {
+        elem("win").style.display = "initial";
+        elem("resetAll").style.display = "initial";
+        elem("main").style.display = "none";
+        elem("pic").style.display = "none";
+
+        elem("boost").innerHTML = "";
+        elem("div2").style.height = "100%";
+        elem("div2").style.width = "100%";
+        elem("div2").style.textAlign = "center";
+        elem("div2").style.margin = "0";
+        elem("div2").style.padding = "0";
+        elem("win").style.textAlign = "center";
+
+        return;
+    }
+    
+    if (canLvlUp)
+    {
+        elem("lvlUp").style.display = "initial";
+    }
     else
-        elem(lvlUpId).style.display = "none";
+    {
+        elem("lvlUp").style.display = "none";
+    }
+
+    elem("boost").innerHTML = boost == 1 ? "" : "Boost!!!";
+    elem("pic").src = boost == 1 ? HIDE_ASS[level] : SHOW_ASS[level];
+    
+    elem("scorePerClick").innerHTML = clickScore;
+    elem("mult").innerHTML = mult;
+    elem("counter").innerHTML = clicks;
+    elem("nextUp").innerHTML = nextUp;
+    elem("upgrades").innerHTML = upgrades;
+    elem("boost").innerHTML = boost == 1 ? "" : "Boost!!!";
+    elem("pic").src = boost == 1 ? HIDE_ASS[level] : SHOW_ASS[level];
+    elem("lvl").innerHTML = level;
 }
 
-function upgrade(counterId, multElemId, nextUpId, clickScoreId, upgradesId)
+document.getElementById("body").addEventListener("click", function(event)
 {
-    if (clicks < mult*10)
+    console.log("kokot");
+    display();
+});
+
+function addOne()
+{
+    clicks += mult * boost;
+    clicks = Number((clicks).toFixed());
+
+    if (clicks >= 100000000)
+        canLvlUp = 1;
+    else
+        canLvlUp = 0;
+    
+    display();
+}
+
+function upgrade()
+{
+    if (clicks < nextUp)
+    {
+        display();
         return 0;
+    }
     
-    let el = elem(counterId);
-    let multEl = elem(multElemId);
-    
-    clicks -= mult*10;
+    clicks -= nextUp;
     clicks = Number(clicks.toFixed());
+
     mult *= defMult;
-    mult = mult.toFixed(2);
+    mult = mult.toFixed();
     
-    multEl.innerHTML = mult;
-    el.innerHTML = clicks;
-    elem(nextUpId).innerHTML = (mult * 10).toFixed();
+    nextUp = (mult * 10).toFixed();
     
     clickScore = Number((mult / 10).toFixed()) + 1;
     clickScore = clickScore ? clickScore : 1;
-    elem(clickScoreId).innerHTML = clickScore;
+    upgrades++;
 
-    elem(upgradesId).innerHTML = ++upgrades;
-    
+    canLvlUp = clicks >= 100000000;
+
+    display();
     return 1;
 }
 
-function maxUpgrade(counterId, multElemId, nextUpId, clickScoreId, upgradesId)
+function maxUpgrade()
 {
-    while (upgrade(counterId, multElemId, nextUpId, clickScoreId, upgradesId)) {}
+    while (upgrade()) {}
 }
 
-function showImage(counterId)
+function showImage()
 {
     document.getElementById(counterId).style.display = "initial";
 }
 
-function hideImage(counterId)
+function hideImage()
 {
     document.getElementById(counterId).style.display = "none";
 }
 
-function showAss(counterId, boostId)
+function showAss()
 {
-    elem(counterId).src = SHOW_ASS[level];
     boost = 2;
-    elem(boostId).innerHTML = "Boost!!!";
+    display();
 }
 
-function hideAss(counterId, boostId)
+function hideAss()
 {
-    elem(counterId).src = HIDE_ASS[level];
     boost = 1;
-    elem(boostId).innerHTML = "";
+    display();
 }
 
-function reset(counterId, multElemId, nextUpId, clickScoreId, upgradesId)
+function reset()
 {
     clicks = 0;
-    elem(counterId).innerHTML = clicks;
     mult = 1;
-    elem(multElemId).innerHTML = mult;
-    elem(nextUpId).innerHTML = Number(mult * 10).toFixed();
+    nextUp = Number(mult * 10).toFixed();
     clickScore = 1;
-    elem(clickScoreId).innerHTML = clickScore;
     upgrades = 0;
-    elem(upgradesId).innerHTML = upgrades;
+
+    display();
 }
 
-function resetLvl(lvlId, picId)
+function resetLvl()
 {
     level = 1;
-    elem(lvlId).innerHTML = level;
-    elem(picId).src = boost == 1 ? HIDE_ASS[level] : SHOW_ASS[level];
+    display();
 }
 
 function setCookie(cname, cvalue)
@@ -140,6 +191,9 @@ function save()
     setCookie("boost", boost);
     setCookie("upgrades", upgrades);
     setCookie("level", level);
+    setCookie("win", win);
+    setCookie("nextUp", nextUp);
+    setCookie("canLvlUp", canLvlUp);
 }
 
 function load()
@@ -161,48 +215,31 @@ function load()
 
     level = getCookie("level");
     level = level == "" ? 1 : Number(level);
+
+    win = getCookie("win");
+    win = win == "" ? 0 : Number(win);
+
+    nextUp = getCookie("nextUp");
+    nextUp = nextUp == "" ? 10 : Number(nextUp);
+
+    canLvlUp = getCookie("canLvlUp");
+    canLvlUp = canLvlUp == "" ? 0 : Number(canLvlUp);
 }
 
-function display(clickScoreId, multId, counterId, nextUpId, upId, boostId, picId, lvlId)
-{
-    elem(clickScoreId).innerHTML = clickScore;
-    elem(multId).innerHTML = mult;
-    elem(counterId).innerHTML = clicks;
-    elem(nextUpId).innerHTML = mult*10;
-    elem(upId).innerHTML = upgrades;
-    elem(boostId).innerHTML = boost == 1 ? "" : "Boost!!!";
-    elem(picId).src = boost == 1 ? HIDE_ASS[level] : SHOW_ASS[level];
-    elem(lvlId).innerHTML = level;
-}
-
-function lvlUp(counterId, multElemId, nextUpId, clickScoreId, upgradesId, lvlUpId, lvlId, picId, boostId, winId, mainId, div2Id)
+function lvlUp()
 {
     if (clicks < 100000000)
         return;
 
     if (HIDE_ASS[level+1] == undefined)
     {
-        elem(boostId).innerHTML = "";
-        elem(winId).style.display = "initial";
-        elem(mainId).style.display = "none";
-        elem(picId).style.display = "none";
-        elem(div2Id).style.height = "100%";
-        elem(div2Id).style.width = "100%";
-        elem(div2Id).style.textAlign = "center";
-        elem(div2Id).style.margin = "0";
-        elem(div2Id).style.padding = "0";
-        elem(winId).style.textAlign = "center";
+        win = 1;
         return;
     }
 
 
     level++;
-    console.log(HIDE_ASS[level]);
-    reset(counterId, multElemId, nextUpId, clickScoreId, upgradesId);
-    elem(lvlUpId).style.display = "none";
-    elem(lvlId).innerHTML = level;
+    reset();
 
-    boost = 1;
-    elem(picId).src = HIDE_ASS[level];
-    elem(boostId).innerHTML = "";
+    display();
 }
